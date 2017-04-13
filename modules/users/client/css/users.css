@@ -14,8 +14,9 @@
   top: 10px;
 }
 .user-profile-picture {
-  max-height: 150px;
+  max-height: 300px;
   min-height: 150px;
+  border-radius: 5%;
 }
 .social-button {
   -webkit-transition-duration: 0.4s;

@@ -1,18 +1,57 @@
-<section>
-  <div class="page-header">
-    <h1>Articles</h1>
-  </div>
-  <div class="list-group">
-    <a ng-repeat="article in vm.articles" ui-sref="articles.view({ articleId: article._id })" class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="article.created | date:'mediumDate'"></span>
-        by
-        <span ng-if="article.user" ng-bind="article.user.displayName"></span>
-        <span ng-if="!article.user">Deleted User</span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="article.title"></h4>
-      <p class="list-group-item-text" ng-bind="article.content"></p>
-    </a>
-  </div>
-</section>
+<!--<section>-->
+  <!--<div class="page-header">-->
+    <!--<h1>Articles</h1>-->
+  <!--</div>-->
+  <!--<div class="list-group">-->
+    <!--<a ng-repeat="article in vm.articles" ui-sref="articles.view({ articleId: article._id })" class="list-group-item">-->
+      <!--<small class="list-group-item-text">-->
+        <!--Posted on-->
+        <!--<span ng-bind="article.created | date:'mediumDate'"></span>-->
+        <!--by-->
+        <!--<span ng-if="article.user" ng-bind="article.user.displayName"></span>-->
+        <!--<span ng-if="!article.user">Deleted User</span>-->
+      <!--</small>-->
+      <!--<h4 class="list-group-item-heading" ng-bind="article.title"></h4>-->
+      <!--<p class="list-group-item-text" ng-bind="article.content"></p>-->
+    <!--</a>-->
+  <!--</div>-->
+<!--</section>-->
+<ion-view view-title="{{vm.listTypeName}}">목표
+  <ion-content>
+
+    <!--<form ng-submit="vm.find();">-->
+    <!--<div id="search">-->
+    <!--<i class="icon-left ion-search" class="float: left;"></i>-->
+    <!--<input type="text" id="query" ng-model="vm.query" placeholder="검색">-->
+    <!--</div>-->
+    <!--</form>-->
+
+    <ion-list>
+      <h4 class="text-center" ng-show="!vm.userBots.length">해당하는 봇을 찾을 수 없네요{{vm.abc}}</h4>
+
+      <ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" ui-sref="user-bots.chat({userBotId: userBot.id})"
+                ng-repeat="userBot in vm.userBots">
+        <img ng-src="{{userBot.imageFile}}">
+        <h2>{{userBot.name}}</h2>
+        <i class="fa fa-users" aria-hidden="true" style="color: #337ab7;"></i><span>친구</span> {{userBot.followed}}명
+        <p>{{userBot.description}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <!--<ion-option-button class="button-assertive" ng-click="vm.unfollowBot(userBot)">-->
+        <!--친구추가-->
+        <!--</ion-option-button>-->
+      </ion-item>
+    </ion-list>
+    <!--<div infinite-scroll="vm.paging()"-->
+    <!--infinite-scroll-distance="0"-->
+    <!--infinite-scroll-disabled = "vm.pagingEnd"-->
+    <!--infinite-scroll-use-document-bottom = true>-->
+    <!--</div>-->
+    <ion-infinite-scroll
+      ng-if="!vm.pagingEnd"
+      on-infinite="vm.paging()"
+      distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>
+
