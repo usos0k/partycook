@@ -2,8 +2,29 @@
   <div class="col-xs-offset-1 col-xs-10 col-md-12">
     <form class="signin form-horizontal">
       <fieldset>
-        <div class="col-sm-6 col-md-4" ng-repeat = "images in vm.user.profileImageURL" style="height: 300px;">
-          <img ng-click="vm.delete()" ngf-src="vm.fileSelected ? picFile : images" alt="{{vm.user.displayName}}" class="img-thumbnail user-profile-picture" ngf-drop>
+        <div class="col-sm-12 col-md-8">
+          <img style="display: block;width: 100%;height: auto;max-height: 600px;max-width: 600px" ngf-src="vm.fileSelected ? picFile0 : vm.user.profileImageURL[0]" alt="{{vm.user.displayName}}" ngf-select="(vm.fileSelected = true) && (vm.loading = false)" ng-model="picFile0" accept="image/*" ngf-before-model-change="vm.loading = true" ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400" class="user-profile-picture" ngf-drop>
+          <a href="#" data-toggle="tooltip" title="누르면 삭제" ng-click="vm.delete(images)" style="position: absolute; top: -10px; background: white;border: 2px solid white; height: 40px;width: 40px;border-radius: 30px;opacity: 0">X</a>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <img style="display: block;width: auto;height: 100%;max-height: 243px;max-width: 242px" ngf-src="vm.fileSelected[1] ? picFile1 : vm.user.profileImageURL[1]" alt="{{vm.user.displayName}}" ngf-select="(vm.fileSelected[1] = true) && (vm.loading = false)" ng-model="picFile1" accept="image/*" ngf-before-model-change="vm.loading = true" ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400" class="user-profile-picture" ngf-drop>
+          <a href="#" data-toggle="tooltip" title="누르면 삭제" ng-click="vm.delete(images)" style="position: absolute; top: -10px; background: white;border: 2px solid white; height: 40px;width: 40px;border-radius: 30px;opacity: 0">X</a>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <img style="display: block;width: auto;height: 100%;max-height: 243px;max-width: 242px" ngf-src="vm.fileSelected[2] ? picFile : vm.user.profileImageURL[2]" alt="{{vm.user.displayName}}" ngf-select="(vm.fileSelected[2] = true) && (vm.loading = false)" ng-model="picFile2" accept="image/*" ngf-before-model-change="vm.loading = true" ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400" class="user-profile-picture" ngf-drop>
+          <a href="#" data-toggle="tooltip" title="누르면 삭제" ng-click="vm.delete(images)" style="position: absolute; top: -10px; background: white;border: 2px solid white; height: 40px;width: 40px;border-radius: 30px;opacity: 0">X</a>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <img style="display: block;width: auto;height: 100%;max-height: 242px;max-width: 242px;margin-top: 25px" ngf-src="vm.fileSelected[3] ? picFile : vm.user.profileImageURL[3]" alt="{{vm.user.displayName}}" ngf-select="(vm.fileSelected[3] = true) && (vm.loading = false)" ng-model="picFile3" accept="image/*" ngf-before-model-change="vm.loading = true" ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400" class="user-profile-picture" ngf-drop>
+          <a href="#" data-toggle="tooltip" title="누르면 삭제" ng-click="vm.delete(images)" style="position: absolute; top: -10px; background: white;border: 2px solid white; height: 40px;width: 40px;border-radius: 30px;opacity: 0">X</a>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <img style="display: block;width: auto;height: 100%;max-height: 242px;max-width: 242px;margin-top: 25px" ngf-src="vm.fileSelected[4] ? picFile : vm.user.profileImageURL[4]" alt="{{vm.user.displayName}}" ngf-select="(vm.fileSelected[4] = true) && (vm.loading = false)" ng-model="picFile4" accept="image/*" ngf-before-model-change="vm.loading = true" ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400" class="user-profile-picture" ngf-drop>
+          <a href="#" data-toggle="tooltip" title="누르면 삭제" ng-click="vm.delete(images)" style="position: absolute; top: -10px; background: white;border: 2px solid white; height: 40px;width: 40px;border-radius: 30px;opacity: 0">X</a>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <img style="display: block;width: auto;height: 100%;max-height: 242px;max-width: 242px;margin-top: 25px" ngf-src="vm.fileSelected[5] ? picFile : vm.user.profileImageURL[4]" alt="{{vm.user.displayName}}" ngf-select="(vm.fileSelected[5] = true) && (vm.loading = false)" ng-model="picFile5" accept="image/*" ngf-before-model-change="vm.loading = true" ngf-resize="{width: 400}" ngf-resize-if="$width > 400 || $height > 400" class="user-profile-picture" ngf-drop>
+          <a href="#" data-toggle="tooltip" title="누르면 삭제" ng-click="vm.delete(images)" style="position: absolute; top: -10px; background: white;border: 2px solid white; height: 40px;width: 40px;border-radius: 30px;opacity: 0">X</a>
         </div>
         <div ng-show="vm.loading" class="form-group text-center">
           <img ng-src="/modules/core/client/img/loaders/loader.gif" height="50" width="50" alt="Loading image...">
@@ -24,3 +45,9 @@
     </form>
   </div>
 </section>
+
+<style>
+  a:hover{
+    opacity: 1!important;
+  }
+</style>

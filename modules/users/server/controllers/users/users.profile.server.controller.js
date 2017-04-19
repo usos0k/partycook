@@ -162,3 +162,26 @@ exports.me = function (req, res) {
 
   res.json(safeUserObject || null);
 };
+
+/**
+ * Delete Image
+ */
+exports.deleteProfilePicture = function (req, res) {
+  User.findOne({_id: req.user._id}).exec(function (err, data) {
+    for(var i = 0; i < data.profileImageURL.length ;i++){
+      if(data.profileImageURL[i] == req.body.picture){
+        data.profileImageURL.splice(data.profileImageURL.indexOf(data.profileImageURL[i]),1)
+      }
+    }
+    data.markModified('profileImageURL');
+    data.save(function (err, result) {
+      if (err){
+        console.log(err)
+      }else {
+        res.json(result);
+      }
+
+    })
+  })
+};
+
