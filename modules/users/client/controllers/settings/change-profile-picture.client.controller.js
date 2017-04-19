@@ -31,6 +31,9 @@
         vm.progress = parseInt(100.0 * evt.loaded / evt.total, 10);
       });
     };
+    vm.delete = function () {
+
+    };
 
     // Called after the user has successfully uploaded a new picture
     function onSuccessItem(response) {

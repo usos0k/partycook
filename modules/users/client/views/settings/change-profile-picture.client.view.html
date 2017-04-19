@@ -3,7 +3,7 @@
     <form class="signin form-horizontal">
       <fieldset>
         <div class="col-sm-6 col-md-4" ng-repeat = "images in vm.user.profileImageURL" style="height: 300px;">
-          <img ngf-src="vm.fileSelected ? picFile : images" alt="{{vm.user.displayName}}" class="img-thumbnail user-profile-picture" ngf-drop>
+          <img ng-click="vm.delete()" ngf-src="vm.fileSelected ? picFile : images" alt="{{vm.user.displayName}}" class="img-thumbnail user-profile-picture" ngf-drop>
         </div>
         <div ng-show="vm.loading" class="form-group text-center">
           <img ng-src="/modules/core/client/img/loaders/loader.gif" height="50" width="50" alt="Loading image...">
